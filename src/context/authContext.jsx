@@ -1,6 +1,5 @@
-import { createContext, useEffect,useState,useContext } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { checkAuthStat, login, logout, signup } from "../helpers/apiComm.js";
-
 const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -19,13 +18,16 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
   const loginUser = async (email, password) => {
-    const data = await login(email, password);
-    if (data) {
+    const res = await login(email, password);
+    if (res.status === 200) {
+      console.log(res);
+      console.log(res.data.data.email);
       setUser({
-        email: data.email,
-        name: data.name,
+        email: res.data.data.email,
+        name: res.data.data.name,
       });
       setIsAuthenticated(true);
+      return res;
     }
   };
   const logoutUser = async () => {
@@ -36,13 +38,15 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const signupUser = async (name, email, password) => {
-    const data = await signup(name, email, password);
-    if (data) {
+    const res = await signup(name, email, password);
+    if (res.status === 200) {
+      console.log(res);
       setUser({
-        email: data.email,
-        name: data.name,
+        email: res.data.data.email,
+        name: res.data.data.name,
       });
       setIsAuthenticated(true);
+        return res;
     }
   };
   const value = { user, isAuthenticated, loginUser, logoutUser, signupUser };
