@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Assuming you're using React Router f
 
 function Sidebar() {
   return (
-    <div className="flex w-[12%] flex-col items-start justify-center h-full bg-gray-800 text-white p-4">
+    <div className="flex w-[12%] flex-col items-start justify-center h-full bg-gray-800 text-white p-4 ">
       <ul className="space-y-2">
         <li>
           <Link to="/dashboard" className="hover:text-blue-500">

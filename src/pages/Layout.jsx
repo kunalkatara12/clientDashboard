@@ -7,9 +7,9 @@ export default function Layout() {
   const isAuthenticated = auth?.isAuthenticated;
   console.log(isAuthenticated);
   return (
-    <div className="w-full h-screen ">
+    <div className="w-full h-[100vh] ">
       <Topbar />
-      <div className="flex h-[85%]">
+      <div className="flex h-[90%]">
         {isAuthenticated && <Sidebar />}
         <Outlet />
       </div>

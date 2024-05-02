@@ -11,7 +11,7 @@ function Topbar() {
     navigate("/login");
   }
   return (
-    <div className="flex items-center gap-2 justify-end w-full h-[15%] bg-gray-800 border-b-2 border-b-black text-white px-4">
+    <div className="flex items-center gap-2 justify-end w-full h-[10%] bg-gray-800 border-b-2 border-b-black text-white px-4">
       {!auth?.isAuthenticated ? (
         <>
           <Link
